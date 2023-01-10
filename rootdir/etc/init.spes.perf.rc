@@ -13,6 +13,12 @@
 # limitations under the License.
 
 on property:vendor.post_boot.parsed=1
+    # IRQ Tuning 
+    # IRQ 218: msm_drm 
+    # IRQ 209: kgsl_3d0
+    write /proc/irq/218/smp_affinity_list 2
+    write /proc/irq/209/smp_affinity_list 1
+
     # Setup runtime cpusets
     write /dev/cpuset/top-app/cpus 0-7
     write /dev/cpuset/foreground/cpus 0-3,6-7
